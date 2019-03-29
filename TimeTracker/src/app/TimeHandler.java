@@ -7,8 +7,10 @@ import java.util.TimeZone;
 public class TimeHandler 
 {
 	public SimpleDateFormat formatFull = new SimpleDateFormat("yyyy-MM-dd HH:mm.ss.SSS");
+	public SimpleDateFormat formatDateFormat = new SimpleDateFormat("yyMMdd");
 	public SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm.ss");
 	public SimpleDateFormat formatTime2 = new SimpleDateFormat("HH:mm.ss");
+	public String dateString;
 	public Date startTime;
 	public Date stopTime;
 	public Date durTime = new Date();
@@ -19,6 +21,7 @@ public class TimeHandler
 		formatFull.setTimeZone(TimeZone.getTimeZone("GMT+1"));
 		formatTime.setTimeZone(TimeZone.getTimeZone("GMT+1"));
 		formatTime2.setTimeZone(TimeZone.getTimeZone("UCS"));
+		dateString = formatDateFormat.format(new Date());
 	}
 	
 	public String startTimeTracker() {

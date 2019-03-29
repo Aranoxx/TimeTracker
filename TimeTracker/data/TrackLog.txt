@@ -1,4 +1,4 @@
-<html><img src='http://icons.iconarchive.com/icons/treetog/junior/16/document-url-icon.png'</img>TimeTracker log:<i>(Version: 0.1.190329-001)</i>
+<html><img src='http://icons.iconarchive.com/icons/treetog/junior/16/document-url-icon.png'</img>TimeTracker log:<i>(Version: 0.2.190329-006)</i>
 <html>Start: <font color="yellow">11:30.55</font> || Stop: <font color="yellow">11:30.55</font> || Duration: <font color="yellow">00:00.00</font> || <font color="yellow">
 <html>Start: <font color="yellow">14:03.34</font> || Stop: <font color="yellow">14:03.34</font> || Duration: <font color="yellow">00:00.21</font> || <font color="yellow">Closing down
 <html>Start: <font color="yellow">08:52.31</font> || Stop: <font color="yellow">08:52.31</font> || Duration: <font color="yellow">00:00.01</font> || <font color="yellow">test2
@@ -10,3 +10,4 @@
 <html>Start: <font color="yellow">18:22.44</font> || Stop: <font color="yellow">18:22.46</font> || Duration: <font color="yellow">00:00.01</font> || <font color="yellow">fdsgf
 <html>Start: <font color="yellow">18:29.27</font> || Stop: <font color="yellow">18:29.28</font> || Duration: <font color="yellow">00:00.01</font> || <font color="yellow">gfgf
 <html>Start: <font color="yellow">18:34.18</font> || Stop: <font color="yellow">18:34.22</font> || Duration: <font color="yellow">00:00.03</font> || <font color="yellow">fh
+<html><font color="yellow">190329</font> || Start: <font color="yellow">21:09.42</font> || Stop: <font color="yellow">21:09.45</font> || Duration: <font color="yellow">00:00.02</font> || <font color="yellow">

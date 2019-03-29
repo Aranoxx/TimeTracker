@@ -17,3 +17,4 @@ VersionLog:
 0.2.190329-004: bugfix - exception .... image filename set wrong in gGui.class.
 0.2.190329-005: bugfix - misc. minor bugs.
 0.2.190329-006: more minor bugfix.....
+0.2.190329-007: added date to log entry.

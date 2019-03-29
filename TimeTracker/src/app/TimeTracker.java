@@ -72,6 +72,7 @@ public class TimeTracker extends JFrame{
 	    appFrame.setLocation(appFramePosX, appFramePosY);
 	    appFrame.setVisible(true);
 	    reloadLog();
+	    System.out.println(time.dateString);
 	    }
 
 	public void initIO() {
@@ -219,8 +220,8 @@ public class TimeTracker extends JFrame{
 		{
 			logEntry = JOptionPane.showInputDialog("What did the time log?");
 			if (logEntry != null)
-			{
-				logString = "<html>Start: <font color=\"yellow\">" + gui.txtStartTime.getText() + "</font> || Stop: <font color=\"yellow\">" + gui.txtStopTime.getText() + "</font> || Duration: <font color=\"yellow\">" + time.durationTracker() + "</font> || <font color=\"yellow\">" + logEntry;
+			{ 
+				logString = "<html><font color=\"yellow\">" +time.dateString + "</font> || Start: <font color=\"yellow\">" + gui.txtStartTime.getText() + "</font> || Stop: <font color=\"yellow\">" + gui.txtStopTime.getText() + "</font> || Duration: <font color=\"yellow\">" + time.durationTracker() + "</font> || <font color=\"yellow\">" + logEntry;
 				gui.lstModel.addElement(logString);
 			}
 		}
