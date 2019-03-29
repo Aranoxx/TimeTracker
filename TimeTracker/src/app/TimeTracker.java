@@ -21,7 +21,8 @@ import javax.swing.ScrollPaneConstants;
 public class TimeTracker extends JFrame{
 	
 	// version code: x.y.zzzzzz-aaa => x.y = release version // zzzzzz = date changes made for test version // aaa = running no. for day.
-	private String verTxt = "Version: "+ "0.2.190329-002";
+	private String verTxt = "Version: "+ "0.2.190329-006";
+	private static final long serialVersionUID = 0;
 	private boolean testMode = false;
 	
 	private int appFramePosX = 500, appFramePosY = 200;
@@ -70,21 +71,16 @@ public class TimeTracker extends JFrame{
 	    appFrame.setUndecorated(true);
 	    appFrame.setLocation(appFramePosX, appFramePosY);
 	    appFrame.setVisible(true);
-	    gui.lstModel.clear();
 	    reloadLog();
-	}
+	    }
 
 	public void initIO() {
 		String appPathBase= System.getProperty("user.dir");
 		Path dirDataPath = Paths.get(appPathBase + "/data");
-		Path dirImagePath = Paths.get(appPathBase + "/image");
 		
 		if (!Files.exists(dirDataPath))		{
 			try { Files.createDirectory(dirDataPath);} catch (IOException e) {}
 		} 
-		if (!Files.exists(dirImagePath))		{
-			try { Files.createDirectory(dirImagePath);} catch (IOException e) {}
-		}
 	}
 	
 	public void readFile(String dir, String file) {
@@ -94,6 +90,13 @@ public class TimeTracker extends JFrame{
 			list = Files.readAllLines(path, Charset.defaultCharset());
 			list.forEach(line -> gui.lstModel.addElement(line));
 		} catch (IOException e) {}
+
+	    if (gui.lstModel.isEmpty())
+	    {
+	    	gui.lstModel.add(0, "<html><img src='http://icons.iconarchive.com/icons/treetog/junior/16/document-url-icon.png'</img>TimeTracker log:<i>(" + verTxt + ")</i>");
+	    } else {
+	    	gui.lstModel.setElementAt("<html><img src='http://icons.iconarchive.com/icons/treetog/junior/16/document-url-icon.png'</img>TimeTracker log:<i>(" + verTxt + ")</i>", 0);
+	    }
 	}
 	
 	public void writeFile(String dir, String file) {
@@ -215,8 +218,11 @@ public class TimeTracker extends JFrame{
 		if (!timerRunning && time.durMillis != 0)
 		{
 			logEntry = JOptionPane.showInputDialog("What did the time log?");
-			logString = "<html>Start: <font color=\"yellow\">" + gui.txtStartTime.getText() + "</font> || Stop: <font color=\"yellow\">" + gui.txtStopTime.getText() + "</font> || Duration: <font color=\"yellow\">" + time.durationTracker() + "</font> || <font color=\"yellow\">" + logEntry;
-			gui.lstModel.addElement(logString);
+			if (logEntry != null)
+			{
+				logString = "<html>Start: <font color=\"yellow\">" + gui.txtStartTime.getText() + "</font> || Stop: <font color=\"yellow\">" + gui.txtStopTime.getText() + "</font> || Duration: <font color=\"yellow\">" + time.durationTracker() + "</font> || <font color=\"yellow\">" + logEntry;
+				gui.lstModel.addElement(logString);
+			}
 		}
 	}
 	
@@ -290,5 +296,4 @@ public class TimeTracker extends JFrame{
 			debugFrame.setVisible(true);
 		}
 	}
-	
 }

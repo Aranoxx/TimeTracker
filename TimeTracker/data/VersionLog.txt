@@ -14,4 +14,6 @@ VersionLog:
 0.2.190329-001: added - chk. if directory exixt, if not, create it.
 0.2.190329-002: change - moved image files from a sub-directoy -> resource-package, so images is integrated in the jar file.
 0.2.190329-003: added - scrollBar for tracking log pane.
-
+0.2.190329-004: bugfix - exception .... image filename set wrong in gGui.class.
+0.2.190329-005: bugfix - misc. minor bugs.
+0.2.190329-006: more minor bugfix.....

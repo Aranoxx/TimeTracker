@@ -4,21 +4,18 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import java.awt.Font;
-import java.net.URL;
-
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 import javax.swing.JTextField;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JList;
 import javax.swing.JLabel;
-import javax.swing.JTextArea;
 
 public class Gui extends JPanel {
+	private static final long serialVersionUID = 0;
 	public JTextField txtStartTime;
 	public JTextField txtRunningTime;
 	public JTextField txtStopTime;
@@ -44,6 +41,7 @@ public class Gui extends JPanel {
 	public JButton btnDeleteLine;
 
 	public String resPath = "/resources";
+	
 	
 	public Gui()
 	{
@@ -99,7 +97,7 @@ public class Gui extends JPanel {
 		btnClose = new JButton();
 		btnClose.setBorder(null);
 		btnClose.setIcon(new ImageIcon(Gui.class.getResource(resPath + "/images/16x16_Close.png")));
-		btnClose.setBounds(542, 7, 16, 16);
+		btnClose.setBounds(541, 5, 16, 16);
 		add(btnClose);
 		
 		btnTest = new JButton();
@@ -138,7 +136,7 @@ public class Gui extends JPanel {
 		txtStopTime.setBounds(374, 23, 164, 36);
 		add(txtStopTime);
 
-		lstTimeLog = new JList(lstModel);
+		lstTimeLog = new JList<String>(lstModel);
 		lstTimeLog.setBackground(Color.BLACK);
 		lstTimeLog.setForeground(Color.GREEN);
 		timelogScrollBar = new JScrollPane(lstTimeLog);
