@@ -1,6 +1,8 @@
 package app;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 import java.awt.Font;
 import java.net.URL;
 
@@ -9,6 +11,7 @@ import javax.swing.SwingConstants;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JList;
@@ -31,6 +34,8 @@ public class Gui extends JPanel {
 
 	public JList<String> lstTimeLog;
 	public DefaultListModel<String> lstModel = new DefaultListModel<String>();
+	public JScrollPane timelogScrollBar;
+	
 	public JButton btnAddToLog;
 	public JButton btnClearLog;
 	public JButton btnSaveLog;
@@ -105,46 +110,44 @@ public class Gui extends JPanel {
 		
 		txtStartTime = new JTextField();
 		txtStartTime.setEditable(false);
+		txtStartTime.setText(stdTxt);
 		txtStartTime.setHorizontalAlignment(SwingConstants.CENTER);
 		txtStartTime.setForeground(Color.GREEN);
 		txtStartTime.setBackground(Color.BLACK);
-		txtStartTime.setText(stdTxt);
 		txtStartTime.setFont(new Font("Arial", Font.BOLD, 26));
 		txtStartTime.setBounds(28, 23, 164, 36);
 		add(txtStartTime);
 		
 		txtRunningTime = new JTextField();
+		txtRunningTime.setEditable(false);
 		txtRunningTime.setText(stdTxt);
 		txtRunningTime.setHorizontalAlignment(SwingConstants.CENTER);
 		txtRunningTime.setForeground(Color.GREEN);
-		txtRunningTime.setFont(new Font("Arial", Font.BOLD, 26));
-		txtRunningTime.setEditable(false);
-		txtRunningTime.setColumns(10);
 		txtRunningTime.setBackground(Color.BLACK);
+		txtRunningTime.setFont(new Font("Arial", Font.BOLD, 26));
 		txtRunningTime.setBounds(200, 23, 164, 36);
 		add(txtRunningTime);
 		
 		txtStopTime = new JTextField();
+		txtStopTime.setEditable(false);
 		txtStopTime.setText(stdTxt);
 		txtStopTime.setHorizontalAlignment(SwingConstants.CENTER);
 		txtStopTime.setForeground(Color.GREEN);
-		txtStopTime.setFont(new Font("Arial", Font.BOLD, 26));
-		txtStopTime.setEditable(false);
-		txtStopTime.setColumns(10);
 		txtStopTime.setBackground(Color.BLACK);
+		txtStopTime.setFont(new Font("Arial", Font.BOLD, 26));
 		txtStopTime.setBounds(374, 23, 164, 36);
 		add(txtStopTime);
-		
+
 		lstTimeLog = new JList(lstModel);
 		lstTimeLog.setBackground(Color.BLACK);
 		lstTimeLog.setForeground(Color.GREEN);
-		lstTimeLog.setBounds(28, 175, 510, 215);
-		add(lstTimeLog);
+		timelogScrollBar = new JScrollPane(lstTimeLog);
+		timelogScrollBar.setBounds(28, 175, 510, 215);
+		add(timelogScrollBar);
 		
 		lblVersion = new JLabel();
 		lblVersion.setFont(new Font("Arial", Font.ITALIC, 9));
 		lblVersion.setBounds(10, 401, 120, 14);
 		add(lblVersion);
-		
 	}
 }
