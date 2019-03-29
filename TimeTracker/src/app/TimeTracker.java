@@ -4,12 +4,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
+import java.util.StringTokenizer;
 
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -17,8 +21,8 @@ import javax.swing.JTextField;
 
 public class TimeTracker extends JFrame{
 	
-	// version code: x.y.zzzzzz-aaa => x.y = release version // zzzzzz = date changes made for testversion // aaa = running no. for day.
-	private String verTxt = "Version: "+ "0.1.190327-005";
+	// version code: x.y.zzzzzz-aaa => x.y = release version // zzzzzz = date changes made for test version // aaa = running no. for day.
+	private String verTxt = "Version: "+ "0.1.190329-001";
 	private boolean testMode = false;
 	
 	private int appFramePosX = 500, appFramePosY = 200;
@@ -48,7 +52,6 @@ public class TimeTracker extends JFrame{
 		
 		initFrame();
 		actionListeners();
-		readFile("data", "TrackLog.txt");
 		debug();
 	}
 
@@ -66,15 +69,14 @@ public class TimeTracker extends JFrame{
 	    appFrame.setLocation(appFramePosX, appFramePosY);
 	    appFrame.setVisible(true);
 	    gui.lstModel.clear();
+	    reloadLog();
 
 	}
 	
 	public void readFile(String dir, String file) {
-		String directory = dir;
-		String fileName = file;
-		Path path = Paths.get(directory, fileName);
+		Path path = Paths.get(dir, file);
 	
-		try {  
+		try {
 		    List<String> list = Files.readAllLines(path);
 		    gui.lstModel.clear();
 		    list.forEach(line -> gui.lstModel.addElement(line));
@@ -82,17 +84,14 @@ public class TimeTracker extends JFrame{
 	}
 
 	public void writeFile(String dir, String file) {
-		String directory = dir;
-		String fileName = file;
-
-		Path path = Paths.get(directory, fileName);
+		Path path = Paths.get(dir, file);
 
 		for (int i = 0; i < gui.lstModel.size(); i++) {
-			logContent = "" + logContent + gui.lstModel.elementAt(i) + "\n";
+			logContent = logContent + gui.lstModel.elementAt(i) + "\n";
 		}
 		
 		try {
-			Files.write(path, logContent.getBytes() );
+			Files.write(path, logContent.getBytes());
 		} catch (IOException e) {}
 	}
 	
@@ -156,9 +155,15 @@ public class TimeTracker extends JFrame{
 				reloadLog();
 			}
 		});
+
+		gui.btnEditLine.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				editLine();
+			}
+		});
 		gui.btnDeleteLine.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gui.lstModel.remove(logIndex);
+				deleteLine();
 			}
 		});
 		gui.btnClose.addActionListener(new ActionListener() {
@@ -216,9 +221,20 @@ public class TimeTracker extends JFrame{
 	public void reloadLog() {
 		readFile("data", "TrackLog.txt");
 	}
+
+	public void deleteLine()	{
+		gui.lstModel.remove(logIndex);
+	}
+
+	public void editLine()	{
+		String lineTxtSubstring1 = gui.lstModel.getElementAt(logIndex).substring(0, 170);
+		String lineTxtSubstring2 = gui.lstModel.getElementAt(logIndex).substring(170);
+		logEntry = JOptionPane.showInputDialog("What did the time log?", lineTxtSubstring2);
+		logString = lineTxtSubstring1 + logEntry;
+		gui.lstModel.setElementAt(logString,  logIndex );
+	}
 	
-	public void closeApp()
-	{
+	public void closeApp()	{
 		int closeChoice = JOptionPane.showConfirmDialog(appFrame, "save log to file before closing?");
 		switch (closeChoice) {
 		case 0:
@@ -232,9 +248,15 @@ public class TimeTracker extends JFrame{
 			break;
 		}
 	}
+	
+	public void fileExplorer()	{
+		JFileChooser file = new JFileChooser();
+		File f = new File("C:/");
+		file.setCurrentDirectory(f);
+		file.showOpenDialog(null);
+	}
 
-	public void debug()
-	{	
+	public void debug()	{	
 		String dTxt = "";
 		JFrame debugFrame = new JFrame();
 		JPanel debugPanel = new JPanel();

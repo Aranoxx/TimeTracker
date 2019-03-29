@@ -32,8 +32,9 @@ public class Gui extends JPanel {
 	public JButton btnAddToLog;
 	public JButton btnClearLog;
 	public JButton btnSaveLog;
-	public JButton btnDeleteLine;
 	public JButton btnReloadLog;
+	public JButton btnEditLine;
+	public JButton btnDeleteLine;
 	/**
 	 * Create the panel. 
 	 */
@@ -78,6 +79,11 @@ public class Gui extends JPanel {
 		btnReloadLog.setFont(new Font("Arial", Font.BOLD, 12));
 		btnReloadLog.setBounds(391, 141, 95, 23);
 		add(btnReloadLog);
+		
+		btnEditLine = new JButton("Edit line");
+		btnEditLine.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		btnEditLine.setBounds(327, 397, 89, 23);
+		add(btnEditLine);
 		
 		btnDeleteLine = new JButton("Delete line");
 		btnDeleteLine.setFont(new Font("Tahoma", Font.PLAIN, 9));

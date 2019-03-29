@@ -1,5 +1,5 @@
 TimeTracker log:
 <html>Start: <font color="yellow">11:30.55</font> || Stop: <font color="yellow">11:30.55</font> || Duration: <font color="yellow">00:00.00</font> || <font color="yellow">
-<html>Start: <font color="yellow">11:30.59</font> || Stop: <font color="yellow">11:30.59</font> || Duration: <font color="yellow">00:00.00</font> || <font color="yellow">
 <html>Start: <font color="yellow">11:50.42</font> || Stop: <font color="yellow">11:50.42</font> || Duration: <font color="yellow">00:00.00</font> || <font color="yellow">
 <html>Start: <font color="yellow">14:03.34</font> || Stop: <font color="yellow">14:03.34</font> || Duration: <font color="yellow">00:00.21</font> || <font color="yellow">Closing down
+<html>Start: <font color="yellow">08:52.31</font> || Stop: <font color="yellow">08:52.31</font> || Duration: <font color="yellow">00:00.01</font> || <font color="yellow">test2

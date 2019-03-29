@@ -6,7 +6,8 @@ VersionLog:
 0.1.190327-002: adding function - "Reload log" 
 0.1.190327-003: code cleanup.
 0.1.190327-004: adding multi-color to log lines.
-0.1.190327-005: Adding close confirm box. 
+0.1.190327-005: adding close confirm box. 
+0.1.190329-001: adding function "Edit line"
 
 
 
