@@ -1,0 +1,3 @@
+<html><img src='http://icons.iconarchive.com/icons/treetog/junior/16/document-url-icon.png'</img>TimeTracker log:<i>(Version: 0.1.190327-005)</i>
+<html>Start: <font color="yellow">07:08.36</font> || Stop: <font color="yellow">07:08.36</font> || Duration: <font color="yellow">00:06.55</font> || <font color="yellow">Toiletbesøg
+<html>Start: <font color="yellow">08:21.46</font> || Stop: <font color="yellow">08:21.46</font> || Duration: <font color="yellow">01:12.50</font> || <font color="yellow">Arbejdede på funktion "Edit line"

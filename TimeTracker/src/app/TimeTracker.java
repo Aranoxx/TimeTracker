@@ -6,23 +6,22 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.util.List;
-import java.util.StringTokenizer;
-
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
 
 public class TimeTracker extends JFrame{
 	
 	// version code: x.y.zzzzzz-aaa => x.y = release version // zzzzzz = date changes made for test version // aaa = running no. for day.
-	private String verTxt = "Version: "+ "0.1.190329-001";
+	private String verTxt = "Version: "+ "0.2.190329-000";
 	private boolean testMode = false;
 	
 	private int appFramePosX = 500, appFramePosY = 200;
@@ -35,8 +34,11 @@ public class TimeTracker extends JFrame{
 	private String logString;
 	private String logContent="";
 	private int logIndex;
+	private String dTxt = "";
+
+    private List<String> list;
 	
-	public TimeTracker()	{
+	public TimeTracker(){
 		Thread t = new Thread()
 		{
 			public void run()
@@ -49,7 +51,6 @@ public class TimeTracker extends JFrame{
 			}
 		};
 		t.start();
-		
 		initFrame();
 		actionListeners();
 		debug();
@@ -70,26 +71,24 @@ public class TimeTracker extends JFrame{
 	    appFrame.setVisible(true);
 	    gui.lstModel.clear();
 	    reloadLog();
-
 	}
-	
+
 	public void readFile(String dir, String file) {
 		Path path = Paths.get(dir, file);
-	
 		try {
-		    List<String> list = Files.readAllLines(path);
 		    gui.lstModel.clear();
-		    list.forEach(line -> gui.lstModel.addElement(line));
+			list = Files.readAllLines(path, Charset.defaultCharset());
+			list.forEach(line -> gui.lstModel.addElement(line));
 		} catch (IOException e) {}
 	}
+	
 
 	public void writeFile(String dir, String file) {
+		logContent = "";
 		Path path = Paths.get(dir, file);
-
 		for (int i = 0; i < gui.lstModel.size(); i++) {
 			logContent = logContent + gui.lstModel.elementAt(i) + "\n";
 		}
-		
 		try {
 			Files.write(path, logContent.getBytes());
 		} catch (IOException e) {}
@@ -203,23 +202,25 @@ public class TimeTracker extends JFrame{
 		if (!timerRunning && time.durMillis != 0)
 		{
 			logEntry = JOptionPane.showInputDialog("What did the time log?");
-			logString = "<html>Start: <font color=\"yellow\">" + time.startTimeTracker() + "</font> || Stop: <font color=\"yellow\">" + time.stopTimeTracker() + "</font> || Duration: <font color=\"yellow\">" + time.durationTracker() + "</font> || <font color=\"yellow\">" + logEntry;
+			logString = "<html>Start: <font color=\"yellow\">" + gui.txtStartTime.getText() + "</font> || Stop: <font color=\"yellow\">" + gui.txtStopTime.getText() + "</font> || Duration: <font color=\"yellow\">" + time.durationTracker() + "</font> || <font color=\"yellow\">" + logEntry;
 			gui.lstModel.addElement(logString);
 		}
 	}
+	
 	public void clearLog() 	{
 		gui.lstModel.clear();
-//		gui.lstModel.addElement("<html><img src=\"image\16x16_Close.png\"TimeTracker log:<i>(" + verTxt + ")</i>");
 		gui.lstModel.addElement("<html><img src='http://icons.iconarchive.com/icons/treetog/junior/16/document-url-icon.png'</img>TimeTracker log:<i>(" + verTxt + ")</i>");
 		logContent = "";
 	}
 
 	public void saveLog() {
-		writeFile("data", "TrackLog.txt");
+		String pPath = System.getProperty("user.dir") + "/data";
+		writeFile(pPath, "TrackLog.txt");
 	}
 	
 	public void reloadLog() {
-		readFile("data", "TrackLog.txt");
+		String pPath = System.getProperty("user.dir") + "/data";
+		readFile(pPath, "TrackLog.txt");
 	}
 
 	public void deleteLine()	{
@@ -256,13 +257,19 @@ public class TimeTracker extends JFrame{
 		file.showOpenDialog(null);
 	}
 
-	public void debug()	{	
-		String dTxt = "";
+public void debugOut(String dTxt2) {
+	dTxt = dTxt + "\n"+ dTxt2;
+}
+	
+	public void debug()	{
+
 		JFrame debugFrame = new JFrame();
-		JPanel debugPanel = new JPanel();
-		JTextField debugTxt = new JTextField(dTxt);
-		debugPanel.add(debugTxt);
-		debugFrame.add(debugPanel);
+		JTextArea debugTxt = new JTextArea(dTxt);
+		JScrollPane scrollBar = new JScrollPane(debugTxt);
+		scrollBar.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollBar.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrollBar.setBounds(50, 50, 100, 100);
+		debugFrame.add(scrollBar);
 		debugFrame.setSize(575, 400);
 		debugFrame.setLocation(495, 620);
 		debugFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -270,6 +277,7 @@ public class TimeTracker extends JFrame{
 		{
 			debugFrame.setVisible(true);
 		}
+		
 	}
 	
 }

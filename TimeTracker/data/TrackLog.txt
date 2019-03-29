@@ -1,5 +1,9 @@
-TimeTracker log:
+<html><img src='http://icons.iconarchive.com/icons/treetog/junior/16/document-url-icon.png'</img>TimeTracker log:<i>(Version: 0.1.190329-001)</i>
 <html>Start: <font color="yellow">11:30.55</font> || Stop: <font color="yellow">11:30.55</font> || Duration: <font color="yellow">00:00.00</font> || <font color="yellow">
-<html>Start: <font color="yellow">11:50.42</font> || Stop: <font color="yellow">11:50.42</font> || Duration: <font color="yellow">00:00.00</font> || <font color="yellow">
 <html>Start: <font color="yellow">14:03.34</font> || Stop: <font color="yellow">14:03.34</font> || Duration: <font color="yellow">00:00.21</font> || <font color="yellow">Closing down
 <html>Start: <font color="yellow">08:52.31</font> || Stop: <font color="yellow">08:52.31</font> || Duration: <font color="yellow">00:00.01</font> || <font color="yellow">test2
+<html>Start: <font color="yellow">10:38.28</font> || Stop: <font color="yellow">10:38.28</font> || Duration: <font color="yellow">00:00.00</font> || <font color="yellow">yyyyyyyyyyyyyyyyy
+<html>Start: <font color="yellow">13:53.01</font> || Stop: <font color="yellow">13:53.01</font> || Duration: <font color="yellow">00:00.00</font> || <font color="yellow">weeeeeeeeeeeeeeeeeeeeeeee
+<html>Start: <font color="yellow">14:05.09</font> || Stop: <font color="yellow">14:05.12</font> || Duration: <font color="yellow">00:00.02</font> || <font color="yellow">q
+<html>Start: <font color="yellow">14:07.21</font> || Stop: <font color="yellow">14:07.24</font> || Duration: <font color="yellow">00:00.03</font> || <font color="yellow">t
+<html>Start: <font color="yellow">14:07.34</font> || Stop: <font color="yellow">14:07.38</font> || Duration: <font color="yellow">00:00.04</font> || <font color="yellow">iii

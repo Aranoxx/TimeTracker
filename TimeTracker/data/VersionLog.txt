@@ -8,6 +8,6 @@ VersionLog:
 0.1.190327-004: adding multi-color to log lines.
 0.1.190327-005: adding close confirm box. 
 0.1.190329-001: adding function "Edit line"
-
-
-
+0.1.190329-002: fix - loading/writing file did not work properly changed "list = Files.readAllLines(path);" -> "list = Files.readAllLines(path, Charset.defaultCharset());"
+0.1.190329-003: fix - time start/stop from gui did not pass correct to the log. changed "time.stopTimeTracker()" ->  "gui.txtStopTime.getText()"
+0.2.190329-000: Working release v0.2 
