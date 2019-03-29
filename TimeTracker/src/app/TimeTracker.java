@@ -21,7 +21,7 @@ import javax.swing.ScrollPaneConstants;
 public class TimeTracker extends JFrame{
 	
 	// version code: x.y.zzzzzz-aaa => x.y = release version // zzzzzz = date changes made for test version // aaa = running no. for day.
-	private String verTxt = "Version: "+ "0.2.190329-000";
+	private String verTxt = "Version: "+ "0.2.190329-002";
 	private boolean testMode = false;
 	
 	private int appFramePosX = 500, appFramePosY = 200;
@@ -51,6 +51,7 @@ public class TimeTracker extends JFrame{
 			}
 		};
 		t.start();
+		initIO();
 		initFrame();
 		actionListeners();
 		debug();
@@ -73,6 +74,19 @@ public class TimeTracker extends JFrame{
 	    reloadLog();
 	}
 
+	public void initIO() {
+		String appPathBase= System.getProperty("user.dir");
+		Path dirDataPath = Paths.get(appPathBase + "/data");
+		Path dirImagePath = Paths.get(appPathBase + "/image");
+		
+		if (!Files.exists(dirDataPath))		{
+			try { Files.createDirectory(dirDataPath);} catch (IOException e) {}
+		} 
+		if (!Files.exists(dirImagePath))		{
+			try { Files.createDirectory(dirImagePath);} catch (IOException e) {}
+		}
+	}
+	
 	public void readFile(String dir, String file) {
 		Path path = Paths.get(dir, file);
 		try {
@@ -82,7 +96,6 @@ public class TimeTracker extends JFrame{
 		} catch (IOException e) {}
 	}
 	
-
 	public void writeFile(String dir, String file) {
 		logContent = "";
 		Path path = Paths.get(dir, file);
@@ -257,12 +270,11 @@ public class TimeTracker extends JFrame{
 		file.showOpenDialog(null);
 	}
 
-public void debugOut(String dTxt2) {
+	public void debugOut(String dTxt2) {
 	dTxt = dTxt + "\n"+ dTxt2;
 }
 	
 	public void debug()	{
-
 		JFrame debugFrame = new JFrame();
 		JTextArea debugTxt = new JTextArea(dTxt);
 		JScrollPane scrollBar = new JScrollPane(debugTxt);
@@ -277,7 +289,6 @@ public void debugOut(String dTxt2) {
 		{
 			debugFrame.setVisible(true);
 		}
-		
 	}
 	
 }

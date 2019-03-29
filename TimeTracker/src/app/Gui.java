@@ -2,6 +2,7 @@ package app;
 
 import javax.swing.JPanel;
 import java.awt.Font;
+import java.net.URL;
 
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
@@ -36,10 +37,9 @@ public class Gui extends JPanel {
 	public JButton btnReloadLog;
 	public JButton btnEditLine;
 	public JButton btnDeleteLine;
-	/**
-	 * Create the panel. 
-	 */
-	@SuppressWarnings("unchecked")
+
+	public String resPath = "/resources";
+	
 	public Gui()
 	{
 		setBackground(Color.WHITE);
@@ -93,13 +93,13 @@ public class Gui extends JPanel {
 
 		btnClose = new JButton();
 		btnClose.setBorder(null);
-		btnClose.setIcon(new ImageIcon("image/16x16_Close.png"));
+		btnClose.setIcon(new ImageIcon(Gui.class.getResource(resPath + "/images/16x16_Close.png")));
 		btnClose.setBounds(542, 7, 16, 16);
 		add(btnClose);
 		
 		btnTest = new JButton();
 		btnTest.setBorder(null);
-		btnTest.setIcon(new ImageIcon("image/16x16_Test.png"));
+		btnTest.setIcon(new ImageIcon(Gui.class.getResource(resPath + "/images/16x16_Test.png")));
 		btnTest.setBounds(522, 390, 16, 16);
 		add(btnTest);
 		
