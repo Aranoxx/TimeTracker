@@ -18,8 +18,8 @@ public class TimeHandler
 	public long durMillis = 0;
 	
 	public TimeHandler() {
-		formatFull.setTimeZone(TimeZone.getTimeZone("GMT+1"));
-		formatTime.setTimeZone(TimeZone.getTimeZone("GMT+1"));
+		formatFull.setTimeZone(TimeZone.getTimeZone("GMT+2"));
+		formatTime.setTimeZone(TimeZone.getTimeZone("GMT+2"));
 		formatTime2.setTimeZone(TimeZone.getTimeZone("UCS"));
 		dateString = formatDateFormat.format(new Date());
 	}

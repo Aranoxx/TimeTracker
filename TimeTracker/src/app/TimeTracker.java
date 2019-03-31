@@ -21,7 +21,7 @@ import javax.swing.ScrollPaneConstants;
 public class TimeTracker extends JFrame{
 	
 	// version code: x.y.zzzzzz-aaa => x.y = release version // zzzzzz = date changes made for test version // aaa = running no. for day.
-	private String verTxt = "Version: "+ "0.2.190329-006";
+	private String verTxt = "Version: "+ "0.2.190329-008";
 	private static final long serialVersionUID = 0;
 	private boolean testMode = false;
 	
